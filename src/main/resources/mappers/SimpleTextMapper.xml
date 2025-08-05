@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="campus.membercampusstudy.mapper.SimpleTextMapper">
+
+    <!-- 모든 SimpleText 데이터 조회 -->
+    <select id="findAll" resultType="campus.membercampusstudy.entity.SimpleText">
+        SELECT id, text FROM simple_text
+    </select>
+
+    <!-- ID로 특정 SimpleText 데이터 조회 -->
+    <select id="findById" parameterType="long" resultType="campus.membercampusstudy.entity.SimpleText">
+        SELECT id, text FROM simple_text WHERE id = #{id}
+    </select>
+
+    <!-- 새로운 SimpleText 데이터 저장 -->
+    <insert id="insert" parameterType="campus.membercampusstudy.entity.SimpleText" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO simple_text (text) VALUES (#{text})
+    </insert>
+
+    <!-- 기존 SimpleText 데이터 수정 -->
+    <update id="update" parameterType="campus.membercampusstudy.entity.SimpleText">
+        UPDATE simple_text
+        SET text = #{text}
+        WHERE id = #{id}
+    </update>
+
+    <!-- ID로 SimpleText 데이터 삭제 -->
+    <delete id="delete" parameterType="long">
+        DELETE FROM simple_text WHERE id = #{id}
+    </delete>
+
+</mapper>
