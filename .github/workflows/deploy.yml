@@ -13,6 +13,11 @@ jobs:
       
       - name: Debug Username
         run: echo "Username is ${{ secrets.DOCKER_USERNAME }}"
+
+      - name: Pull latest image
+        run: |
+          cd /home/misa-jd/ssd/server/web/template-springboot
+          docker compose pull
         
       - name: Log in to Docker Registry
         uses: docker/login-action@v3
